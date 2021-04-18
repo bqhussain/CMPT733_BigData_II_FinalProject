@@ -5,6 +5,15 @@
 - Antibiotic resistance imposes a heavy burden on healthcare because due to the time it takes for sample and culture results to return, clinicians rely on prior experience and static guidelines to prescribe antibiotics without accounting for patient-specific attributes, leading to several fatalities. Such experimental treatment often fails to account for the changes that have been developed in antibiotic resistance with time and geographical locations. Hence, our project's first goal is to predict if an organism is resistive or sensitive towards numerous antibiotics, measured by interpreting a culture test. 
 - Likewise, it is extremely insightful for medical professionals to have an estimate of how long a patient is likely to stay in the hospital and if they have a high chance of being in danger; which led to our second goal of predicting a patients length of stay and mortality rate using their demographics and first 24 hours vital signs.
 
+## Data Product
+Running on EC2 <br>
+http://ec2-3-84-161-149.compute-1.amazonaws.com:8088/ <br>
+How to run on local machine
+'''
+docker run -p 5005:5005 -d --name mimic_app ghcr.io/qyune/mimic_app:v1
+docker run -p 8088:8088 -d --name mimic_web ghcr.io/qyune/mimic_web:v1
+'''
+
 ### Directory Structure
     .
     |-- code                                          
