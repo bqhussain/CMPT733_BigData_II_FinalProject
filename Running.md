@@ -9,8 +9,8 @@ docker run -p 8088:8088 -d --name mimic_web ghcr.io/qyune/mimic_web:v1
 ```
 pip3 install virtualenv
 python3 -m venv venv
-for linux: source venv/bin/activate
-for windows: venv\Scripts\activate.bat
+for Linux or Mac: source venv/bin/activate
+for Windows: venv\Scripts\activate.bat
 pip3 install -r requirements.txt
 (optional) pip3 freeze > requirements.txt
 python3 run.py
