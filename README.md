@@ -1,9 +1,5 @@
 ![image](https://user-images.githubusercontent.com/32183829/115143110-33861e00-9ffa-11eb-9223-ba2012fd7450.png)
 
-<p align="center">
-  <src="![image](https://user-images.githubusercontent.com/32183829/115143110-33861e00-9ffa-11eb-9223-ba2012fd7450.png)">
-</p>
-
 ## Prediction on Antibiotic Resistance and Length of Stay for ICU Patients
 - Big Data has been revolutionary when it comes to the banking and education system, and now it is time to implement it in healthcare in order to potentially bring social benefits to the public, such as delivering better patient treatment, improving drug efficiency, helping clinical professionals and medical caregivers and simplifying hospital operations.  
 - Antibiotic resistance imposes a heavy burden on healthcare because due to the time it takes for sample and culture results to return, clinicians rely on prior experience and static guidelines to prescribe antibiotics without accounting for patient-specific attributes, leading to several fatalities. Such experimental treatment often fails to account for the changes that have been developed in antibiotic resistance with time and geographical locations. Hence, our project's first goal is to predict if an organism is resistive or sensitive towards numerous antibiotics, measured by interpreting a culture test. 
