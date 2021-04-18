@@ -7,7 +7,7 @@
 
 ## Data Product
 ### Running on EC2 <br>
-http://ec2-3-84-161-149.compute-1.amazonaws.com:8088/ <br><br>
+http://ec2-3-84-161-149.compute-1.amazonaws.com:8088/ <br>
 
 ### How to run on local machine using Docker registry
 ```
