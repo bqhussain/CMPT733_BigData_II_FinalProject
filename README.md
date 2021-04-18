@@ -1,4 +1,6 @@
-![image](https://user-images.githubusercontent.com/32183829/115143177-98417880-9ffa-11eb-997a-b1f18a4681cf.png)
+<p align="center">
+  <img width="600" height="350" src="https://user-images.githubusercontent.com/32183829/115143177-98417880-9ffa-11eb-997a-b1f18a4681cf.png">
+</p>
 
 ## Prediction on Antibiotic Resistance and Length of Stay for ICU Patients
 - Big Data has been revolutionary when it comes to the banking and education system, and now it is time to implement it in healthcare in order to potentially bring social benefits to the public, such as delivering better patient treatment, improving drug efficiency, helping clinical professionals and medical caregivers and simplifying hospital operations.  
