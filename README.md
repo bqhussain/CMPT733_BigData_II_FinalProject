@@ -10,9 +10,31 @@
     |-- code                                          
     |    |-- Antibiotic Effectiveness                          
          |    |-- DatasetPreProcessing.ipynb
-              |-- Diagnosis Models
-              |   |-- Pickle files for each model
-                  |-- Jupyter Notebooks for running each model
+         |    |-- Diagnosis Models
+         |    |   |-- Pickle files for each model
+         |        |-- Jupyter Notebooks for running each model
+         |
+         |-- Mortality Rate and Length of Stay
+         |    |-- Mortality_LOS_pipeline.ipynb
+         |    |-- models
+         |    |-- data
+         |
+         |-- mimic_app
+         |    |-- web_application
+         |    |-- Dockerfile
+         |    |-- run.py
+         |    |-- requirements.txt
+         |
+         |-- web_app
+         |    |-- apps
+         |    |-- Dockerfile
+         |    |-- app.py
+         |    |-- data
+         |    |-- app.py
+         |    |-- app_temp.py
+    |-- data                                          
+    |    |-- mimic-iii-clinical-database-demo-1.4
+    |    |-- mimic-code         
     |-- docs
     |    |-- milestone.pdf
          |-- report.pdf
