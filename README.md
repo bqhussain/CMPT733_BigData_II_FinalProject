@@ -1,5 +1,7 @@
+![image](https://user-images.githubusercontent.com/32183829/115143110-33861e00-9ffa-11eb-9223-ba2012fd7450.png)
+
 <p align="center">
-  <img width="460" height="300" src="https://user-images.githubusercontent.com/32183829/115142853-c8881780-9ff8-11eb-8825-232711544004.png/460/300">
+  <src="![image](https://user-images.githubusercontent.com/32183829/115143110-33861e00-9ffa-11eb-9223-ba2012fd7450.png)">
 </p>
 
 ## Prediction on Antibiotic Resistance and Length of Stay for ICU Patients
