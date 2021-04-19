@@ -38,4 +38,4 @@ python3 app.py
 - code/CSV_files_for_Dash.ipynb has the jupyter notebook that will generate CSV files for the Dasboard for the web application and will push these .csv files into AWS Cloud
 
 ### LOS and Mortaility Rate Prediction
-- code/Mortality_LOS_pipeline.ipynb is the jupyter notebook that contain the whole pipeline for this task.
+- code/Mortality_LOS_pipeline.ipynb is the jupyter notebook that contains the entire pipeline for this task.

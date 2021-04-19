@@ -11,16 +11,16 @@
 - predictive model for checking if an organism is sensitive or resistant towards an antibiotic
 - predictive model for mortality rate in a general hospital ward vs ICU
 - predictive model and warning trigger for length of stay in a hospital greater than 3 and 7 days
-- run the frontend end code and predict the explore the different models yourself!
+- run the frontend end code and explore the different predictive models yourself!
 
 ### Data Product
-- Running on EC2 <br>
-http://ec2-3-84-161-149.compute-1.amazonaws.com:8088/ <br>
+- Running on EC2: http://ec2-3-84-161-149.compute-1.amazonaws.com:8088/ 
     
 ### Notes
 This project is submitted as the final project for CMPT 733: Programming for Big Data II
 - Code running instructions can be found in Running.md
 - Project details can be found in report.pdf
+- Quick project overview can be found on YouTube: https://www.youtube.com/watch?v=VMss4CuzvX8
 
 ### Directory Structure
     .
@@ -52,10 +52,11 @@ This project is submitted as the final project for CMPT 733: Programming for Big
          |    |-- app_temp.py
     |-- data                                          
     |    |-- mimic-iii-clinical-database-demo-1.4
-    |    |-- mimic-code         
+    |    |-- mimic-code     
+    |    |-- data_Mortality_LOS
     |-- docs
     |    |-- milestone.pdf
-         |-- report.pdf
+    |    |-- report.pdf
     |-- Running.md
     |-- README.md
 
