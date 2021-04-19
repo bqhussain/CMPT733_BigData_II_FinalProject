@@ -14,14 +14,13 @@
 - run the frontend end code and predict the explore the different models yourself!
 
 ### Data Product
-- Running on EC2 <br>
-http://ec2-3-84-161-149.compute-1.amazonaws.com:8088/ <br>
+- Running on EC2: http://ec2-3-84-161-149.compute-1.amazonaws.com:8088/ 
     
 ### Notes
 This project is submitted as the final project for CMPT 733: Programming for Big Data II
 - Code running instructions can be found in Running.md
 - Project details can be found in report.pdf
-- Quick project overview can be found on YouTube using https://www.youtube.com/watch?v=VMss4CuzvX8
+- Quick project overview can be found on YouTube: https://www.youtube.com/watch?v=VMss4CuzvX8
 
 ### Directory Structure
     .
