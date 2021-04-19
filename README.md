@@ -21,40 +21,39 @@ http://ec2-3-84-161-149.compute-1.amazonaws.com:8088/ <br>
 This project is submitted as the final project for CMPT 733: Programming for Big Data II
 - Code running instructions can be found in Running.md
 - Project details can be found in report.pdf
+- Quick project overview can be found on YouTube using https://www.youtube.com/watch?v=VMss4CuzvX8
 
 ### Directory Structure
     .
     |-- code                                          
     |    |-- Antibiotic Effectiveness                          
-         |    |-- DatasetPreProcessing.ipynb
-         |    |-- Diagnosis Models
-         |    |   |-- Pickle files for each model
-         |        |-- Jupyter Notebooks for running each model
-         |
-         |-- Mortality Rate and Length of Stay
-         |    |-- Mortality_LOS_pipeline.ipynb
-         |    |-- models
-         |    |-- data
-         |
-         |-- mimic_app
-         |    |-- web_application
-         |    |-- Dockerfile
-         |    |-- run.py
-         |    |-- requirements.txt
-         |
-         |-- web_app
-         |    |-- apps
-         |    |-- Dockerfile
-         |    |-- app.py
-         |    |-- data
-         |    |-- app.py
-         |    |-- app_temp.py
+    |    |    |-- DatasetPreProcessing.ipynb
+    |    |    |-- Diagnosis Models
+    |    |    |   |-- Pickle files for each model
+    |    |        |-- Jupyter Notebooks for running each model
+    |    |-- Mortality Rate and Length of Stay
+    |    |    |-- Mortality_LOS_pipeline.ipynb
+    |    |    |-- models
+    |    |    |-- data
+    |    |-- mimic_app
+    |    |    |-- web_application
+    |    |    |-- Dockerfile
+    |    |    |-- run.py
+    |    |    |-- requirements.txt
+    |    |-- web_app
+    |    |    |-- apps
+    |    |    |-- Dockerfile
+    |    |    |-- app.py
+    |    |    |-- data
+    |    |    |-- app.py
+    |    |    |-- app_temp.py
     |-- data                                          
     |    |-- mimic-iii-clinical-database-demo-1.4
-    |    |-- mimic-code         
+    |    |-- mimic-code     
+    |    |-- data_Mortality_LOS
     |-- docs
     |    |-- milestone.pdf
-         |-- report.pdf
+    |    |-- report.pdf
     |-- Running.md
     |-- README.md
 
