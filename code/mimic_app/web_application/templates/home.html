@@ -1,7 +1,97 @@
 {% extends 'layout.html' %}
-
 {% block content %}
-    	<h2></h2><br />
+
+    <body>
+
+    {#    <center>#}
+
+    {#        <h1> Efficiency Prediction of Antibiotics against various Organisms for Diagnosis </h1><br>#}
+
+    <div class="tab-content" id="tab2" style="display: none;">
+
+        <div class="container-section">
+{#            <form method="POST", action="{{ url_for('predict') }}">#}
+            <form method="POST", action="#">
+
+                <p class="form-row form-row-wide">
+                    <label for="gender">Gender:
+                        <select name='gender' id="gender">
+                            {% for gen in gender %}
+                                <option value="{{ gen }}" selected>
+                                    {{ gen }}</option>
+                            {% endfor %}
+                        </select>
+                    </label>
+                </p>
+                Age (Years) : <input type="text" , name='age' ,class="input">
+                <p class="form-row form-row-wide">
+                    <label for="ethnicity">Ethnicity:
+                        <select name='ethnicity' id="ethnicity" , class="input-text">
+                            {% for ethn in ethnicity %}
+                                <option value="{{ ethn }}" selected>
+                                    {{ ethn }}</option>
+                            {% endfor %}
+                        </select>
+                    </label>
+                </p>
+
+
+                <p class="form-row form-row-wide">
+                    <label for="diagnosis">Diagnosis:
+                        <select name='diagnosis' id="diagnosis" , class="input-text">
+                            {% for diag in diagnosis %}
+                                <option value="{{ diag }}" selected>
+                                    {{ diag }}</option>
+                            {% endfor %}
+                        </select>
+                    </label>
+                </p>
+
+                {#            <label for="diagnosis">Diagnosis:</label>#}
+                {#            <select name='diagnosis' id="diagnosis", class="input-text">#}
+                {#                {% for diag in diagnosis %}#}
+                {#                    <option value="{{ diag }}" selected>#}
+                {#                        {{ diag }}</option>#}
+                {#                {% endfor %}#}
+                {#            </select>#}
+                {#  Diagnosis : <input type="text" , name='diagnosis' , placeholder="field 4"> <br><br>#}
+                Previous Admissions : <input type="text" , name='previous_admission'>
+                Sample Collection Interval (Days) : <input type="text" , name='simple_collection_interval'>
+                Antibiotic Name : <input type="text" , name='antibiotic_name'>
+                {#            Organism Name : <input type="text" , name='organism_name' >#}
+
+                <p class="form-row form-row-wide">
+                    <label for="organism">Organism Name:
+                        <select name='organism_name' data-live-search="true" id="organism_name" , class="form-control">
+                            {% for org in organism_name %}
+                                <option value="{{ org }}" selected>
+                                    {{ org }}</option>
+                            {% endfor %}
+                        </select>
+                    </label>
+                </p>
+
+
+                Specimen Type : <input type="text" , name='specimen_type'>
+
+
+                <input type="submit" , value='PREDICT'>
+
+                <br>
+                <h3> {{ title }} </h3>
+                {% if data == 1 %}
+                    <h4>{{ result1 }}</h4>
+                {% else %}
+                    <h4>{{ result2 }}</h4>
+                {% endif %}
+
+            </form>
+        </div>
+    </div>
+    {#    </center>#}
+
+    </body>
+
 {% endblock content %}
 
 
