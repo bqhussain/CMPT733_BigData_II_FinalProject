@@ -36,3 +36,6 @@ python3 app.py
 - code/DatasetPreProcessing.ipynb is the jupyter notebook that generates the 17 csv files for running the models
 - code/Diagnosis Models/*Diagnosis Name* includes the code for running every model in their jupyter notebook and their generated pickle files
 - code/CSV_files_for_Dash.ipynb has the jupyter notebook that will generate CSV files for the Dasboard for the web application and will push these .csv files into AWS Cloud
+
+### LOS and Mortaility Rate Prediction
+- code/Mortality_LOS_pipeline.ipynb is the jupyter notebook that contain the whole pipeline for this task.
