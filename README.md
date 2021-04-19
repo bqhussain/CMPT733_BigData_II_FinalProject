@@ -44,10 +44,11 @@ This project is submitted as the final project for CMPT 733: Programming for Big
          |
          |-- web_app
          |    |-- apps
+         |    |    |-- anit.py  
+         |         |-- patient_info.py
          |    |-- Dockerfile
          |    |-- app.py
          |    |-- data
-         |    |-- app.py
          |    |-- app_temp.py
     |-- data                                          
     |    |-- mimic-iii-clinical-database-demo-1.4
