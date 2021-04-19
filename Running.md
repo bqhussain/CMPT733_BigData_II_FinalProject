@@ -32,3 +32,4 @@ pip3 install -r requirements.txt
 --> Add current packages on to requirements.txt
 python3 app.py
 ```
+
