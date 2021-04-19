@@ -11,7 +11,7 @@
 - predictive model for checking if an organism is sensitive or resistant towards an antibiotic
 - predictive model for mortality rate in a general hospital ward vs ICU
 - predictive model and warning trigger for length of stay in a hospital greater than 3 and 7 days
-- run the frontend end code and predict the explore the different models yourself!
+- run the frontend end code and explore the different predictive models yourself!
 
 ### Data Product
 - Running on EC2: http://ec2-3-84-161-149.compute-1.amazonaws.com:8088/ 
