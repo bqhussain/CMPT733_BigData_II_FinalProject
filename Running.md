@@ -15,7 +15,7 @@ for Linux or Mac: source venv/bin/activate
 for Windows: venv\Scripts\activate.bat
 pip3 install -r requirements.txt
 (optional) pip3 freeze > requirements.txt
---> Add current packages on  to requirements.txt
+--> Add current packages on to requirements.txt
 python3 run.py
 ```
 
@@ -29,6 +29,6 @@ for Linux or Mac: source venv/bin/activate
 for Windows: venv\Scripts\activate.bat
 pip3 install -r requirements.txt
 (optional) pip3 freeze > requirements.txt
---> Add current packages on  to requirements.txt
+--> Add current packages on to requirements.txt
 python3 app.py
 ```
