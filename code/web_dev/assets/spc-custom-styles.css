@@ -319,12 +319,12 @@ body {
   text-align: right;
 }
 
-#value-setter-view-btn, #value-setter-set-btn {
+#value-setter-view-btn, #value-setter-set-btn, #search_btn {
   border: 1px solid #4B5460;
   color: darkgray;
 }
 
-#value-setter-set-btn:hover, #value-setter-view-btn:hover {
+#value-setter-set-btn:hover, #value-setter-view-btn:hover, #search_btn:hover {
   color: #91dfd2;
   border-color: white;
 }
@@ -604,21 +604,13 @@ body {
     text-align: center;
   }
 
-  .banner h5 {
-    font-size: 1.4rem;
-  }
-
-  .banner h6 {
-    font-size: 1.3rem;
-  }
-
   #banner-logo button {
     display: none;
   }
 
   .banner Img {
-    height: 3rem;
-    margin: 1rem;
+    height: 5rem;
+    margin: 2rem;
   }
 
   #app-container {
@@ -804,4 +796,9 @@ body {
   #LOS-tab.custom-tab {
     margin-left: 0;
   }
+}
+
+#metric-select-dropdown > div {
+  width: 200px !important;
+
 }

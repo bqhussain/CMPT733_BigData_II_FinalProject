@@ -16,7 +16,6 @@ engine.connect()
 patient_data = pd.read_sql_table('task1', engine)
 print("patient_info")
 print(patient_data.info())
-params = patient_data['icustay_id'].tolist()
 last_click = 0
 length_out = 13
 search_input = 275642
@@ -101,23 +100,18 @@ def clean_age(age):
 
 #***html layout***
 layout = html.Div([
-    html.Label(id="metric-select-title", children="Select ICU Stay ID of Patient"),
+    html.H1(id='title', style={'text-align': 'center', 'color':'white', 'background-color':'#D3D3D3', 'border-radius':'25px'}, children='Prediction of Mortality Rate and Length of Stay for ICU Patients'),
+    html.Div(id="hidden-div", style={"display":"none"}),
     dbc.InputGroup(
         [
-            dcc.Dropdown(
-                id="metric-select-dropdown",
-                options=list(
-                    {"label": param, "value": param} for param in params[1:]
-                ),
-                value=params[1],
-            ),
-            dbc.InputGroupAddon(html.Button("Search", id="search_btn"), 
-                                addon_type="append", style={'margin-left': '5px'}),
+            dbc.Input(id="search_in", placeholder="ICU Stay ID (263738, 226241, 275083...)", value=search_input, style={"width": "50%"}),
+            dbc.InputGroupAddon(dbc.Button("Search", color="primary", 
+                                        className="mr-1", id="search_btn"), 
+                                addon_type="append"),
         ],
-        className="",
-        style={'margin-top': '2px'}
+        className="mb-3",
+        style={'margin-top': '10px'}
     ),
-
     html.Div([
         dbc.InputGroup([
             dbc.InputGroupAddon("ICU Stay ID", addon_type="prepend"),
@@ -237,7 +231,7 @@ layout = html.Div([
     Output(component_id="mor_icu", component_property="figure")
 ],
     [Input(component_id="search_btn", component_property="n_clicks"),
-     Input(component_id="metric-select-dropdown", component_property="value")]
+     Input(component_id="search_in", component_property="value")]
 )
 def update_out(clicks, search_in):
     global last_click, output_list, search_input

@@ -25,6 +25,42 @@ CONTENT_STYLE = {
     "padding": "2rem 1rem",
 }
 
+def build_tabs():
+    return html.Div(
+        id="tabs",
+        className="tabs",
+        children=[
+            dcc.Tabs(
+                id="app-tabs",
+                value="tab2",
+                className="custom-tabs",
+                children=[
+                    dcc.Tab(
+                        id="Specs-tab",
+                        label="Antibiotic Effectiveness Dashboard",
+                        value="tab1",
+                        className="custom-tab",
+                        selected_className="custom-tab--selected",
+                    ),
+                    dcc.Tab(
+                        id="Control-chart-tab",
+                        label="Antibiotic Effectiveness Prediction",
+                        value="tab2",
+                        className="custom-tab",
+                        selected_className="custom-tab--selected",
+                    ),
+                    dcc.Tab(
+                        id="LOS-tab",
+                        label="Mortality Rate and LOS Prediction",
+                        value="tab3",
+                        className="custom-tab",
+                        selected_className="custom-tab--selected",
+                    ),
+                ],
+            )
+        ],
+    )
+
 link_ids = ['anti', 'AEP', 'patient_info']
 link_label = ['Antibiotic Effectiveness Dashboard', 'Antibiotic Effectiveness Prediction', 'Mortality Rate and LOS Prediction']
 
