@@ -3,7 +3,7 @@ import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
-from apps import patient_info, anit
+from apps import patient_info, anit, anti_pred
 from app_temp import app
 
 def build_banner():
@@ -34,7 +34,7 @@ def build_tabs():
         children=[
             dcc.Tabs(
                 id="app-tabs",
-                value="tab3",
+                value="tab2",
                 className="custom-tabs",
                 children=[
                     dcc.Tab(
@@ -86,9 +86,9 @@ def render_tab_content(tab_switch):
     if tab_switch == "tab1":
         return [anit.layout]
     elif tab_switch == "tab2":
-        return [anit.layout]
+        return [anti_pred.layout]
     elif tab_switch == "tab3":
         return [patient_info.layout]
 
 if __name__ == "__main__":
-    app.run_server(host='0.0.0.0', port=8088, debug=False)
+    app.run_server(host='0.0.0.0', port=8088, debug=True)
