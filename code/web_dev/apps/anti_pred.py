@@ -11,6 +11,7 @@ from apps.preprocess import data_process
 import pickle
 
 last_click = 0
+count = 0
 
 gender_list = ['F', 'M']
 
@@ -112,13 +113,13 @@ organisms_list = ['STAPH AUREUS COAG +', 'STAPHYLOCOCCUS, COAGULASE NEGATIVE',
 
 layout = html.Div([
     # Manually select metrics
-    html.Div(
-        id="set-specs-intro-container",
-        # className='twelve columns',
-        children=html.P(
-            "Use historical control limits to establish a benchmark, or set new values."
-        ),
-    ),
+    # html.Div(
+    #     id="set-specs-intro-container",
+    #     # className='twelve columns',
+    #     children=html.P(
+    #         "Use historical control limits to establish a benchmark, or set new values."
+    #     ),
+    # ),
     html.Div(
         id="settings-menu",
         children=[
@@ -132,7 +133,7 @@ layout = html.Div([
                         options=list(
                             {"label": gender, "value": gender} for gender in gender_list
                         ),
-                        value=gender_list[0],
+                        value=gender_list[1],
                     ),
                     html.Br(),
                     html.Label(id="age", children="Age (Years):"),
@@ -161,7 +162,7 @@ layout = html.Div([
                         options=list(
                             {"label": model, "value": model} for model in model_list
                         ),
-                        value=model_list[0],
+                        value=model_list[3],
                     ),
                     html.Br(),
                     html.Label(id="previous-admissions", children="Previous Admissions:"),
@@ -191,9 +192,9 @@ layout = html.Div([
                         style={"margin-bottom": "20px", "width": "100%",
                                "backgroundColor": "#242633",
                                "color": "white"},
-                        value='GENTAMICIN'
+                        # OXACILLIN GENTAMICIN PENICILLIN
+                        value='PENICILLIN'
                     ),
-                    # html.Br(),
                     html.Label(id="organism", children="Organism Name:"),
                     dcc.Dropdown(
                         id="organisms-dropdown",
@@ -207,37 +208,25 @@ layout = html.Div([
                     dcc.Input(
                         id="specimen-input",
                         type='text',
-                        style={"margin-bottom": "20px", "width": "100%",
+                        style={"margin-bot tom": "20px", "width": "100%",
                                "backgroundColor": "#242633",
                                "color": "white"},
                         value='SPUTUM'
                     ),
                 ],
             ),
-
             html.Div(
                 id="value-setter-menu",
-                # className='six columns',
                 children=[
-                    html.Div(id="value-setter-panel"),
                     html.Br(),
                     html.Div(
                         id="button-div",
                         children=[
-                            html.Button("Predict",
-                                        id="predict-btn",
-                                        ),
-                            # html.Button(
-                            #     "View current setup",
-                            #     id="value-setter-view-btn",
-                            #     n_clicks=0,
-                            # ),
-                            html.Div(id='predict-output-container')
+                            html.Img(id="pred_img", src=app.get_asset_url("null_img.png")),
+                            html.Div(id='predict-output-container'),
+                            html.Button("Predict", id="predict-btn",),
                         ],
                     ),
-                    # html.Div(
-                    #     id="value-setter-view-output", className="output-datatable"
-                    # ),
                 ],
             ),
         ],
@@ -246,7 +235,10 @@ layout = html.Div([
 
 
 @app.callback(
-    Output('predict-output-container', 'children'),
+    [
+        Output('predict-output-container', 'children'),
+        Output('pred_img', 'src')
+    ],
     [Input('gender-dropdown', 'value'),
      Input('age-input', 'value'),
      Input('ethnicity-dropdown', 'value'),
@@ -265,7 +257,6 @@ def get_gender(gender, age, ethn, diag, prev_adm, sample_col, anti, orgs, speci,
         'gender': gender,
         'age': age,
         'ethnicity': ethn,
-
         'previous_admission': prev_adm,
         'simple_collection_interval': sample_col,
         'antibiotic_name': anti,
@@ -273,8 +264,9 @@ def get_gender(gender, age, ethn, diag, prev_adm, sample_col, anti, orgs, speci,
         'specimen_type': speci,
     }
 
-    print(clicks)
-    if clicks:
+    global count
+    if clicks and clicks > count:
+        count = clicks
         global last_click
         if clicks == 1 and last_click > 0:
             last_click = 0
@@ -298,7 +290,11 @@ def get_gender(gender, age, ethn, diag, prev_adm, sample_col, anti, orgs, speci,
 
             pred = model.predict(test_data)
             print(pred[0])
+            result = 'Sensitive'
+            img_src = app.get_asset_url("happy.png")
+            if pred[0] == 0:
+                result = 'Resitant'
+                img_src = app.get_asset_url("cry.png")
+            return ['Prediction: {}'.format(result), img_src]
 
-            return 'Prediction "{}"'.format(pred[0])
-
-    return None
+    return [None, app.get_asset_url("null_img.png")]

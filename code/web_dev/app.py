@@ -20,7 +20,7 @@ def build_banner():
             html.Div(
                 id="banner-logo",
                 children=[
-                    dbc.NavLink(html.Button( children="GITHUB"), href="https://github.com/qyune/CMPT733_BigData_II_FinalProject", id="Github-button"),
+                    dbc.NavLink(html.Button( children="GITHUB"), href="https://github.com/bqhussain/CMPT733_BigData_II_FinalProject", id="Github-button"),
                     html.Img(id="logo", src=app.get_asset_url("sfu_bigdata_logo2.png")),
                 ],
             ),
@@ -34,7 +34,7 @@ def build_tabs():
         children=[
             dcc.Tabs(
                 id="app-tabs",
-                value="tab2",
+                value="tab1",
                 className="custom-tabs",
                 children=[
                     dcc.Tab(
@@ -91,4 +91,4 @@ def render_tab_content(tab_switch):
         return [patient_info.layout]
 
 if __name__ == "__main__":
-    app.run_server(host='0.0.0.0', port=8088, debug=True)
+    app.run_server(host='0.0.0.0', port=8088, debug=False)

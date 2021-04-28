@@ -246,6 +246,7 @@ body {
 
 #value-setter-menu {
   flex: 1 1 30%;
+  margin-top: 9%;
   margin-left: 5rem;
   display: flex;
   flex-direction: column;
@@ -444,4 +445,75 @@ body {
 
 #row-two{
   margin-left: 100px !important;
+}
+
+/* anit_pred.py */
+#predict-btn {
+  width: 200px;
+  height: 50px;
+  font-size: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+}
+
+#predict-btn:hover {
+  color: #87ceeb;
+}
+
+#predict-output-container {
+  font-size: 24px;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+#pred_img {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+/* #gender-dropdown {
+  margin-top: 5px;
+}
+
+#gender {
+  font-size: 16px;
+  font-weight: bold;
+} */
+
+#metric-select-menu input{
+  margin-top: 5px !important;
+}
+
+#ethnicity-dropdown{
+  margin-top: 5px !important;
+  color: white;
+}
+
+#diagnosis-dropdown {
+  margin-top: 5px !important;
+  color: white;
+}
+
+#organisms-dropdown {
+  margin-top: 5px !important;
+  color: white;
+}
+
+#gender-dropdown {
+  margin-top: 5px !important;
+  color: white;
+}
+
+#metric-select-menu label {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#logo {
+  width: 150px;
+  height: 40px;
 }
