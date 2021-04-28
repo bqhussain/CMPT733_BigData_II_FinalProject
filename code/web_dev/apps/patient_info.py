@@ -4,7 +4,8 @@ import dash
 import dash_core_components as dcc
 import dash_bootstrap_components as dbc
 import dash_html_components as html
-from dash.dependencies import Input, Output
+import dash_daq as daq
+from dash.dependencies import Input, Output, State
 from app_temp import app
 from sqlalchemy import create_engine, text
 import plotly.graph_objects as go
@@ -18,76 +19,6 @@ print("patient_info")
 print(patient_data.info())
 params = patient_data['icustay_id'].tolist()
 last_click = 0
-length_out = 13
-search_input = 275642
-output_list = ['NAN']*length_out
-# init figure los 3
-fig = go.Figure(go.Indicator(
-    mode = "gauge+number",
-    value = 0,
-    domain = {'x': [0, 1], 'y': [0, 1]},
-    title = {'text': "Probability of Length of Stay > 3 Days", 'font': {'size': 20}},
-    gauge = {
-        'axis': {'range': [0, 100], 'tickwidth': 1, 'tickcolor': "darkblue"},
-        'bar': {'color': "lightblue"},
-        'bgcolor': "white",
-        'borderwidth': 2,
-        'bordercolor': "gray",}))
-
-fig.update_layout(width=600, height=400)
-
-output_list[9] = fig
-# init figure los 7
-fig = go.Figure(go.Indicator(
-    mode = "gauge+number",
-    value = 0,
-    domain = {'x': [0, 1], 'y': [0, 1]},
-    title = {'text': "Probability of Length of Stay > 7 Days", 'font': {'size': 20}},
-    gauge = {
-        'axis': {'range': [0, 100], 'tickwidth': 1, 'tickcolor': "darkblue"},
-        'bar': {'color': "lightblue"},
-        'bgcolor': "white",
-        'borderwidth': 2,
-        'bordercolor': "gray",}))
-
-fig.update_layout(width=600, height=400)
-
-output_list[10] = fig
-# init figure Mortality in Hospital
-fig = go.Figure(go.Indicator(
-    mode = "gauge+number",
-    value = 0,
-    domain = {'x': [0, 1], 'y': [0, 1]},
-    title = {'text': "Mortality Percentage in Hospital", 'font': {'size': 20}},
-    gauge = {
-        'axis': {'range': [0, 100], 'tickwidth': 1, 'tickcolor': "darkblue"},
-        'bar': {'color': "lightblue"},
-        'bgcolor': "white",
-        'borderwidth': 2,
-        'bordercolor': "gray",}))
-
-fig.update_layout(width=600, height=400)
-
-output_list[11] = fig
-# init figure Mortality in ICU
-fig = go.Figure(go.Indicator(
-    mode = "gauge+number",
-    value = 0,
-    domain = {'x': [0, 1], 'y': [0, 1]},
-    title = {'text': "Mortality Percentage in ICU", 'font': {'size': 20}},
-    gauge = {
-        'axis': {'range': [0, 100], 'tickwidth': 1, 'tickcolor': "darkblue"},
-        'bar': {'color': "lightblue"},
-        'bgcolor': "white",
-        'borderwidth': 2,
-        'bordercolor': "gray",}))
-
-fig.update_layout(width=600, height=400)
-
-output_list[12] = fig
-output_list_ori = output_list
-
-# function to normalize age
 def clean_age(age):
   if age == 300:
     return 90
@@ -200,54 +131,117 @@ layout = html.Div([
                                     style={"width": "80%"}
                                 ),
         ]),
-    ]),
-    html.Div(id='div_pat_1', children=[
-            html.Div(id='div_pat_l', children=[
-                dcc.Graph(id='mor_hosp'),
-            ], className="col-md-6"),
-            html.Div(id='pat_l', children=[
-                dcc.Graph(id='mor_icu'),
-            ], className="col-md-6"),
+    ], className="patient_demo"),
+    html.Div(id='los', children=[
+        html.Div(
+            id="card-2",
+            children=[
+                html.P("Mortality Percentage in Hospital"),
+                daq.Gauge(
+                    id="mor_hosp",
+                    max=100,
+                    min=0,
+                    units="%",
+                    color="#87ceeb",
+                    size=300,
+                    showCurrentValue=True,
+                ),
+            ],
+            className="col-md-6",
+        ),
+        html.Div(
+            id="card-2",
+            children=[
+                html.P("Mortality Percentage in ICU"),
+                daq.Gauge(
+                    id="mor_icu",
+                    max=100,
+                    min=0,
+                    units="%",
+                    color="#87ceeb",
+                    size=300,
+                    showCurrentValue=True,
+                ),
+            ],
+            className="col-md-6",
+        ),
     ], className="row"),
     html.Div(id='mor', children=[
-            html.Div(id='div_pat_r', children=[
-                dcc.Graph(id='los_3'),
-            ], className="col-md-6"),
-            html.Div(id='pat_r', children=[
-                dcc.Graph(id='los_7'),
-            ], className="col-md-6"),
+        html.Div(
+            id="card-2",
+            children=[
+                html.P("Probability of Length of Stay > 3 Days"),
+                daq.Gauge(
+                    id="los_3",
+                    max=100,
+                    min=0,
+                    units="%",
+                    color="#87ceeb",
+                    size=300,
+                    showCurrentValue=True,
+                ),
+            ],
+            className="col-md-6",
+        ),
+        html.Div(
+            id="card-2",
+            children=[
+                html.P("Probability of Length of Stay > 7 Days"),
+                daq.Gauge(
+                    id="los_7",
+                    max=100,
+                    min=0,
+                    units="%",
+                    color="#87ceeb",
+                    size=300,
+                    showCurrentValue=True,
+                ),
+            ],
+            className="col-md-6",
+        ),
     ], className="row"),
-  
 ])
+
 
 #***callback***
 @app.callback(
-    [Output(component_id="id_out", component_property="value"),
-    Output(component_id="gen_out", component_property="value"),
-    Output(component_id="eth_out", component_property="value"),
-    Output(component_id="age_out", component_property="value"),
-    Output(component_id="ins_out", component_property="value"),
-    Output(component_id="dia_out", component_property="value"),
-    Output(component_id="adm_out", component_property="value"),
-    Output(component_id="car_out", component_property="value"),
-    Output(component_id="wei_out", component_property="value"),
-    Output(component_id="los_3", component_property="figure"),
-    Output(component_id="los_7", component_property="figure"),
-    Output(component_id="mor_hosp", component_property="figure"),
-    Output(component_id="mor_icu", component_property="figure")
-],
-    [Input(component_id="search_btn", component_property="n_clicks"),
-     Input(component_id="metric-select-dropdown", component_property="value")]
+    [
+        Output(component_id="id_out", component_property="value"),
+        Output(component_id="gen_out", component_property="value"),
+        Output(component_id="eth_out", component_property="value"),
+        Output(component_id="age_out", component_property="value"),
+        Output(component_id="ins_out", component_property="value"),
+        Output(component_id="dia_out", component_property="value"),
+        Output(component_id="adm_out", component_property="value"),
+        Output(component_id="car_out", component_property="value"),
+        Output(component_id="wei_out", component_property="value"),
+        Output(component_id="mor_hosp", component_property="value"),
+        Output(component_id="mor_icu", component_property="value"),
+        Output(component_id="los_3", component_property="value"),
+        Output(component_id="los_7", component_property="value"),
+        Output(component_id="mor_hosp", component_property="color"),
+        Output(component_id="mor_icu", component_property="color"),
+        Output(component_id="los_3", component_property="color"),
+        Output(component_id="los_7", component_property="color")
+    ],
+    [
+     Input(component_id="search_btn", component_property="n_clicks"),
+    ],
+    state=[State(component_id="metric-select-dropdown", component_property='value')]
+
 )
 def update_out(clicks, search_in):
-    global last_click, output_list, search_input
-    # update last click count
-    # clicked search btn
+    global last_click
+    print(clicks, last_click, search_in)
+    output_list = ['NAN']*17
     if clicks:
-        if clicks-1 == last_click and search_input:
+        if clicks == 1 and last_click > 0:
+            last_click = 0
+        print(clicks, last_click, search_in)
+        if clicks-1 == last_click and search_in:
             last_click = clicks
             # get data
-            try:
+            if search_in:
                 patient_info = patient_data.loc[patient_data['icustay_id']==int(search_in)]
                 patient_info = patient_info.reset_index()
                 output_list[0] = str(patient_info['icustay_id'][0])
@@ -259,104 +253,40 @@ def update_out(clicks, search_in):
                 output_list[6] = str(patient_info['admission_type'][0])
                 output_list[7] = str(patient_info['first_careunit'][0])
                 output_list[8] = str(patient_info['weight_first'][0])
-                # make figure for los_3
+                ori_color = "#87ceeb"
+                alert_color = "#f45060"
+                # change value of los_3
+                mort_hosp = int(patient_info['mort_hosp_1'][0])
+                print(patient_info['mort_hosp'][0])
+                output_list[9] = mort_hosp
+                # change value of los_3
+                mort_icu = int(patient_info['mort_icu_1'][0])
+                output_list[10] = mort_icu
+                # change value of los_3
                 los_3_1 = int(patient_info['los_3_1'][0])
-                bar_color = "darkblue"
-                if los_3_1 > 50:
-                    bar_color = "#EA4043"
-                fig = go.Figure(go.Indicator(
-                    mode = "gauge+number",
-                    value =  los_3_1,
-                    domain = {'x': [0, 1], 'y': [0, 1]},
-                    title = {'text': "Probability of Length of Stay > 3 Days", 'font': {'size': 20}},
-                    number = {'suffix': "%"},
-                    gauge = {
-                        'axis': {'range': [0, 100], 'tickwidth': 1, 'tickcolor': "darkblue"},
-                        'bar': {'color': bar_color},
-                        'bgcolor': "white",
-                        'borderwidth': 2,
-                        'bordercolor': "gray",
-                        'threshold': {
-                            'line': {'color': "red", 'width': 4},
-                            'thickness': 0.70,
-                            'value': 50}
-                    },))
-                fig.update_layout(width=600, height=400)
-                output_list[9] = fig
-                # make figure for los_7
+                output_list[11] = los_3_1
+                # change value of los_3
                 los_7_1 = int(patient_info['los_7_1'][0])
-                bar_color = "darkblue"
-                if los_7_1 > 50:
-                    bar_color = "#EA4043"
-                fig = go.Figure(go.Indicator(
-                    mode = "gauge+number",
-                    value =  los_7_1,
-                    domain = {'x': [0, 1], 'y': [0, 1]},
-                    title = {'text': " Probability of Length of Stay > 7 Days", 'font': {'size': 20}},
-                    number = {'suffix': "%"},
-                    gauge = {
-                        'axis': {'range': [0, 100], 'tickwidth': 1, 'tickcolor': "darkblue"},
-                        'bar': {'color': bar_color},
-                        'bgcolor': "white",
-                        'borderwidth': 2,
-                        'bordercolor': "gray",
-                        'threshold': {
-                            'line': {'color': "red", 'width': 4},
-                            'thickness': 0.70,
-                            'value': 50}
-                    }))
-                fig.update_layout(width=600, height=400)
-                output_list[10] = fig
-                # make figure for mort_hosp
-                mort_hosp_1 = int(patient_info['mort_hosp_1'][0])
-                bar_color = "darkblue"
-                if mort_hosp_1 > 50:
-                    bar_color = "#EA4043"
-                fig = go.Figure(go.Indicator(
-                    mode = "gauge+number",
-                    value =  mort_hosp_1,
-                    domain = {'x': [0, 1], 'y': [0, 1]},
-                    title = {'text': "Mortality Percentage in Hospital", 'font': {'size': 20}},
-                    number = {'suffix': "%"},
-                    gauge = {
-                        'axis': {'range': [0, 100], 'tickwidth': 1, 'tickcolor': "darkblue"},
-                        'bar': {'color': bar_color},
-                        'bgcolor': "white",
-                        'borderwidth': 2,
-                        'bordercolor': "gray",
-                        'threshold': {
-                            'line': {'color': "red", 'width': 4},
-                            'thickness': 0.70,
-                            'value': 50}
-                    }))
-                fig.update_layout(width=600, height=400)
-                output_list[11] = fig
-                # make figure for mort_icu
-                mort_icu_1 = int(patient_info['mort_icu_1'][0])
-                bar_color = "darkblue"
-                if mort_hosp_1 > 50:
-                    bar_color = "#EA4043"
-                fig = go.Figure(go.Indicator(
-                    mode = "gauge+number",
-                    value =  mort_icu_1,
-                    domain = {'x': [0, 1], 'y': [0, 1]},
-                    title = {'text': "Mortality Percentage in ICU", 'font': {'size': 20}},
-                    number = {'suffix': "%"},
-                    gauge = {
-                        'axis': {'range': [0, 100], 'tickwidth': 1, 'tickcolor': "darkblue"},
-                        'bar': {'color': bar_color},
-                        'bgcolor': "white",
-                        'borderwidth': 2,
-                        'bordercolor': "gray",
-                        'threshold': {
-                            'line': {'color': "red", 'width': 4},
-                            'thickness': 0.70,
-                            'value': 50}
-                    })
-                )
-                fig.update_layout(width=600, height=400)
-                output_list[12] = fig
-            except:
-                print('No Match ICU Stay ID')
-                return output_list_ori
+                output_list[12] = los_7_1
+                output_list[13] = ori_color
+                if output_list[9] > 50:
+                    output_list[13] = alert_color
+                output_list[14] = ori_color
+                if output_list[10] > 50:
+                    output_list[14] = alert_color
+                output_list[15] = ori_color
+                if output_list[11] > 50:
+                    output_list[15] = alert_color
+                output_list[16] = ori_color
+                if output_list[12] > 50:
+                    output_list[16] = alert_color
+                return output_list
+    output_list[9] = 0
+    output_list[10] = 0
+    output_list[11] = 0
+    output_list[12] = 0
+    output_list[13] = "#87ceeb"
+    output_list[14] = "#87ceeb"
+    output_list[15] = "#87ceeb"
+    output_list[16] = "#87ceeb"
     return output_list
