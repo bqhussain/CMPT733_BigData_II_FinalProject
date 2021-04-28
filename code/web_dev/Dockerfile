@@ -6,7 +6,9 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY apps/ apps/
+COPY assets/ assets
 COPY data/ data/
+COPY models/ models/
 COPY app.py .
 COPY app_temp.py .
 

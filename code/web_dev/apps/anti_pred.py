@@ -11,7 +11,6 @@ from apps.preprocess import data_process
 import pickle
 
 last_click = 0
-count = 0
 
 gender_list = ['F', 'M']
 
@@ -224,7 +223,7 @@ layout = html.Div([
                         children=[
                             html.Img(id="pred_img", src=app.get_asset_url("null_img.png")),
                             html.Div(id='predict-output-container'),
-                            html.Button("Predict", id="predict-btn",),
+                            html.Button("Predict", id="predict-btn", ),
                         ],
                     ),
                 ],
@@ -240,7 +239,7 @@ layout = html.Div([
         Output('pred_img', 'src')
     ],
     [
-     Input("predict-btn", "n_clicks")
+        Input("predict-btn", "n_clicks")
     ],
     state=[
         State('gender-dropdown', 'value'),
@@ -254,8 +253,8 @@ layout = html.Div([
         State('specimen-input', 'value'),
     ]
 )
-def get_gender(clicks, gender, age, ethn, diag, 
-                prev_adm, sample_col, anti, orgs, speci):
+def get_gender(clicks, gender, age, ethn, diag,
+               prev_adm, sample_col, anti, orgs, speci):
     input_dict = {
         'gender': gender,
         'age': age,
@@ -294,7 +293,7 @@ def get_gender(clicks, gender, age, ethn, diag,
             result = 'Sensitive'
             img_src = app.get_asset_url("happy.png")
             if pred[0] == 0:
-                result = 'Resitant'
+                result = 'Resistant'
                 img_src = app.get_asset_url("cry.png")
             return ['Prediction: {}'.format(result), img_src]
 
