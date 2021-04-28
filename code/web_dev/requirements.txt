@@ -41,3 +41,4 @@ statsmodels==0.12.2
 urllib3==1.25.9
 Werkzeug==1.0.1
 scikit-learn==0.24.1
+dash-daq==0.5.0
