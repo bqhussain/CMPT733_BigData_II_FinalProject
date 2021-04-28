@@ -5,7 +5,7 @@ import dash
 import dash_core_components as dcc
 import dash_bootstrap_components as dbc
 import dash_html_components as html
-from dash.dependencies import Input, Output
+from dash.dependencies import Input, Output, State
 from app_temp import app
 from apps.preprocess import data_process
 import pickle
@@ -239,20 +239,23 @@ layout = html.Div([
         Output('predict-output-container', 'children'),
         Output('pred_img', 'src')
     ],
-    [Input('gender-dropdown', 'value'),
-     Input('age-input', 'value'),
-     Input('ethnicity-dropdown', 'value'),
-     Input('diagnosis-dropdown', 'value'),
-     Input('previous-admissions-input', 'value'),
-     Input('sample-collection-input', 'value'),
-     Input('antibiotic-input', 'value'),
-     Input('organisms-dropdown', 'value'),
-     Input('specimen-input', 'value'),
+    [
      Input("predict-btn", "n_clicks")
-     ]
+    ],
+    state=[
+        State('gender-dropdown', 'value'),
+        State('age-input', 'value'),
+        State('ethnicity-dropdown', 'value'),
+        State('diagnosis-dropdown', 'value'),
+        State('previous-admissions-input', 'value'),
+        State('sample-collection-input', 'value'),
+        State('antibiotic-input', 'value'),
+        State('organisms-dropdown', 'value'),
+        State('specimen-input', 'value'),
+    ]
 )
-def get_gender(gender, age, ethn, diag, prev_adm, sample_col, anti, orgs, speci,
-               clicks):
+def get_gender(clicks, gender, age, ethn, diag, 
+                prev_adm, sample_col, anti, orgs, speci):
     input_dict = {
         'gender': gender,
         'age': age,
@@ -264,9 +267,7 @@ def get_gender(gender, age, ethn, diag, prev_adm, sample_col, anti, orgs, speci,
         'specimen_type': speci,
     }
 
-    global count
-    if clicks and clicks > count:
-        count = clicks
+    if clicks:
         global last_click
         if clicks == 1 and last_click > 0:
             last_click = 0
