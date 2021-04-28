@@ -34,7 +34,7 @@ def build_tabs():
         children=[
             dcc.Tabs(
                 id="app-tabs",
-                value="tab3",
+                value="tab1",
                 className="custom-tabs",
                 children=[
                     dcc.Tab(

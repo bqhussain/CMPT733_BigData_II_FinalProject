@@ -142,7 +142,7 @@ layout = html.Div([
                     max=100,
                     min=0,
                     units="%",
-                    color="#91dfd2",
+                    color="#87ceeb",
                     size=300,
                     showCurrentValue=True,
                 ),
@@ -158,7 +158,7 @@ layout = html.Div([
                     max=100,
                     min=0,
                     units="%",
-                    color="#91dfd2",
+                    color="#87ceeb",
                     size=300,
                     showCurrentValue=True,
                 ),
@@ -176,7 +176,7 @@ layout = html.Div([
                     max=100,
                     min=0,
                     units="%",
-                    color="#91dfd2",
+                    color="#87ceeb",
                     size=300,
                     showCurrentValue=True,
                 ),
@@ -192,7 +192,7 @@ layout = html.Div([
                     max=100,
                     min=0,
                     units="%",
-                    color="#91dfd2",
+                    color="#87ceeb",
                     size=300,
                     showCurrentValue=True,
                 ),
@@ -253,7 +253,7 @@ def update_out(clicks, search_in):
                 output_list[6] = str(patient_info['admission_type'][0])
                 output_list[7] = str(patient_info['first_careunit'][0])
                 output_list[8] = str(patient_info['weight_first'][0])
-                ori_color = "#91dfd2"
+                ori_color = "#87ceeb"
                 alert_color = "#f45060"
                 # change value of los_3
                 mort_hosp = int(patient_info['mort_hosp_1'][0])
@@ -285,8 +285,8 @@ def update_out(clicks, search_in):
     output_list[10] = 0
     output_list[11] = 0
     output_list[12] = 0
-    output_list[13] = "#91dfd2"
-    output_list[14] = "#91dfd2"
-    output_list[15] = "#91dfd2"
-    output_list[16] = "#91dfd2"
+    output_list[13] = "#87ceeb"
+    output_list[14] = "#87ceeb"
+    output_list[15] = "#87ceeb"
+    output_list[16] = "#87ceeb"
     return output_list

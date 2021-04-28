@@ -76,7 +76,7 @@ body {
 }
 
 .banner button:hover {
-  color: #92e0d3;
+  color: #87ceeb;
   border-color: whitesmoke;
 }
 
@@ -116,7 +116,7 @@ body {
 }
 
 #Specs-tab.custom-tab--selected, #Control-chart-tab.custom-tab--selected, #LOS-tab.custom-tab--selected{
-  border-bottom: #91dfd2 solid 4px !important;
+  border-bottom: #87ceeb solid 4px !important;
 }
 
 #Specs-tab.custom-tab {
@@ -211,7 +211,7 @@ body {
 
 
 .Select.is-focused:not(.is-open) > .Select-control {
-  border-color: #91dfd2 !important;
+  border-color: #87ceeb !important;
 }
 
 /* Container
@@ -386,7 +386,7 @@ body {
 .patient_demo span {
   background-color: #242633 !important;
   border-color: darkgray !important;
-  color: #92e0d3;
+  color: #87ceeb;
   font-size: 14px;
 }
 
@@ -417,10 +417,6 @@ body {
   align-self: flex-start;
 }
 
-/* #card-2 .scale, #card-2 .needle, #card-2 .needle-knob {
-  display: none !important;
-} */
-
 #card-2 P {
   align-self: auto;
 }
@@ -437,6 +433,15 @@ body {
 }
 
 #value-setter-set-btn:hover, #value-setter-view-btn:hover, #search_btn:hover {
-  color: #91dfd2;
+  color: #87ceeb;
   border-color: white;
+}
+
+/* anti.py */
+#row-one{
+  margin-right: 100px !important;
+}
+
+#row-two{
+  margin-left: 100px !important;
 }
